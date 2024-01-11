@@ -1,10 +1,10 @@
-# Devfest Lagos Student Edition Demo with Axelar
+# Full Stack Interchain dApp on Scroll with Axelar
 
-This is a cross-chain bounty DApp that allows users to send tokens as bounty from one chain to another. This DApp is built using Solidity, Next.js and [Axelar General Message Passing](https://docs.axelar.dev/dev/general-message-passing/overview).
+This is a cross-chain bounty DApp that allows users to send tokens as bounty from one chain to another. This dApp is built using Solidity, Next.js and [Axelar General Message Passing](https://docs.axelar.dev/dev/general-message-passing/overview) on [Scroll](https://docs.scroll.io/en/developers/) blockchain.
 
 ## **Table of Contents**
 
-- [**Features**](https://github.com/Olanetsoft/devfest-lagos-student-edition-demo-with-axelar#features)
+- [**Features**](https://github.com/Olanetsoft/scroll-interchain-dapp-workshop-with-axelar#features)
 - [**Installation**](#installation)
 - [**Usage**](#usage)
 - [**Technologies Used**](#technologies-used)
@@ -14,7 +14,7 @@ This is a cross-chain bounty DApp that allows users to send tokens as bounty fro
 
 - Token from one chain to another
 - Bounty stats
-- User-friendly interface with dark mode support
+- User-friendly interface
 - Integration with Axelar General Message Passing
 - Real-time response and bounty status updates
 
@@ -25,13 +25,13 @@ To install and run this application locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Olanetsoft/devfest-lagos-student-edition-demo-with-axelar.git
+   git clone https://github.com/Olanetsoft/scroll-interchain-dapp-workshop-with-axelar.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd devfest-lagos-student-edition-demo-with-axelar
+   cd https://github.com/Olanetsoft/scroll-interchain-dapp-workshop-with-axelar
    ```
 
 3. Install the dependencies:
@@ -44,6 +44,7 @@ To install and run this application locally, follow these steps:
 
    ```bash
    cd hardhat
+   npm install
    ```
 
 5. Set up the environment variables to deploy the smart contracts:
@@ -58,29 +59,33 @@ To install and run this application locally, follow these steps:
 6. Compile and Deploy the smart contracts:
 
    ```bash
-   npm i
    npx hardhat run scripts/deploy.js --network <network>
    ```
 
-   Replace `<network>` with the desired network (e.g. `Scroll_Sepolia` and `Eths_Sepolia` in this case). Copy the contract address once the deployment is complete.
+   Replace `<network>` with the desired network (e.g. `scroll_sepolia` and `eth_sepolia` in this case).
 
-   > Ensure you update the Axelar gateway and gas service address for Binance and Eth_Sepolia respectively in `deploy.js` file under the `scripts` directory and deploy them separately. You can find the gateway and gas service address [here](https://docs.axelar.dev/resources/testnet).
+   > Ensure you update the Axelar gateway and gas service address for Scroll Sepolia and Ethereum Sepolia respectively in `deploy.js` file under the `scripts` directory and deploy them separately. You can find the gateway and gas service address for testnet [here](https://docs.axelar.dev/resources/testnet).
+
+   Copy the contract address once the deployment is complete and save it for later use.
 
 7. Set up the environment variables:
 
    - Create a `.env.local` file in the root directory.
+     - ```bash
+       cd ..
+       touch .env.local
+       ```
    - Define the following variables in the `.env.local` file:
      ```apache
      NEXT_PUBLIC_SCROLL_SEPOLIA_CONTRACT_ADDRESS=<Scroll_Sepolia contract address>
      NEXT_PUBLIC_ETH_SEPOLIA_CONTRACT_ADDRESS=<Eth_Sepolia contract address>
      NEXT_PUBLIC_ETH_SEPOLIA_RPC_URL=https://gateway.tenderly.co/public/sepolia
      ```
-     Replace `<Scroll_Sepolia contract address>` and `<Eth_Sepolia contract address>`, with the respective values.
+     Replace `<Scroll_Sepolia contract address>` and `<Eth_Sepolia contract address>`, with the respective values from the previous step when you deployed the smart contracts.
 
-8. Start the development server:
+8. Start the development server in the root directory:
 
 ```bash
-cd ..
 npm run dev
 ```
 
@@ -92,14 +97,15 @@ Open your web browser and visit [`http://localhost:3000`](http://localhost:3000)
 
 1. Connect your wallet to the DApp. Ensure you have some test tokens in your wallet.
 2. Approve the DApp to spend your tokens.
-3. Enter the amount of tokens for the bounty, receivers addresses and click on the `Send` button.
+3. Enter the amount of tokens for the bounty, receivers addresses seperated by comma and click on the `Send` button.
 4. Confirm the transaction in your wallet.
-5. Wait for the transaction to be confirmed. You can check the status of the transaction in the `Bounty Stats` section.
+5. Wait for the transaction to be confirmed. You can check the status of the transaction in the `Bounty Stats` section on the same page. :)
 
 ## **Technologies Used**
 
 - React
 - Solidity
+- Scroll Blockchain
 - [Axelar General Message Passing](https://docs.axelar.dev/dev/general-message-passing/overview)
 - @rainbow-me/rainbowkit
 - wagmi

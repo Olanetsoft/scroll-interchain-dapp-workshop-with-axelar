@@ -227,7 +227,7 @@ export default function Home() {
       <header className="py-4">
         <div className="flex justify-between items-center">
           <a
-            href="https://github.com/Olanetsoft/devfest-lagos-student-edition-demo-with-axelar"
+            href="https://github.com/Olanetsoft/scroll-interchain-dapp-workshop-with-axelar"
             className="text-2xl font-bold text-gray-800"
           >
             <FaGithub />
